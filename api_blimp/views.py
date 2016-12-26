@@ -1,12 +1,15 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from django.views.generic import View
+from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import generics, mixins, permissions, viewsets, status
+from rest_framework.decorators import api_view
 from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 
@@ -27,12 +30,10 @@ class GetUpdateGame(generics.RetrieveUpdateAPIView):
     serializer_class = serializers.GameSerializer
     lookup_url_kwarg = "game_pk"
 
-@method_decorator(csrf_exempt, name='dispatch')
-class GameSearcher(View):
-
-    http_method_names = ['post']
-
-    def post(self, request, format=None):
+@csrf_exempt
+@api_view(["POST"])
+def GameSearcher(request):
+    if request.method.lower() == "post":
         # Serialize "new" member's email
         serializer = serializers.SearchingPlayerSerializer(data=request.POST)
 
@@ -40,7 +41,22 @@ class GameSearcher(View):
             return Response(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
 
-        print("Player ID sent in: {}".format(serializer.player_id))
-        return Response("Still working here, gimme a second",
-                        status=status.HTTP_501_NOT_IMPLEMENTED)
+        print("Player ID sent in: {}".format(serializer.validated_data["player_id"]))
+        searching_player = models.Player.objects.get(pk=serializer.validated_data["player_id"])
 
+        available_game = models.Game.objects.filter(Q(good_guy__isnull=True) |
+                                                    Q(bad_guy__isnull=True)).first()
+        if not available_game:
+            # create game
+            available_game = models.Game.objects.create(good_guy=searching_player)
+            status_code = status.HTTP_201_CREATED
+        else:
+            status_code = status.HTTP_200_OK
+        print(available_game)
+        serialized_game = serializers.GameSerializer(available_game)
+
+        return JsonResponse(serialized_game.data,
+                            status=status_code)
+    else:
+        return JsonResponse({"message": "Only posts allowed here"},
+                            status=status.HTTP_403_FORBIDDEN)

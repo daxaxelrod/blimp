@@ -13,11 +13,11 @@ class Player(models.Model):
 
 
 class Game(models.Model):
-    good_guy = models.ForeignKey(Player, related_name='good_guy')
+    good_guy = models.ForeignKey(Player, related_name='good_guy', null=True, blank=True)
     bad_guy = models.ForeignKey(Player, related_name='bad_guy', null=True, blank=True)
-    winner = models.ForeignKey(Player, related_name='winner')
+    winner = models.ForeignKey(Player, related_name='winner', null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)
-    duration = models.DecimalField(max_digits=15, decimal_places=3)
+    duration = models.DecimalField(max_digits=15, decimal_places=3, default=0)
 
     #GAME DATA STREAM
     # good guy
