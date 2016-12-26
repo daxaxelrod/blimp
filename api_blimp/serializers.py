@@ -23,3 +23,7 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = models.Game
+
+class SearchingPlayerSerializer(serializers.Serializer):
+
+    player_id = serializers.IntegerField()
