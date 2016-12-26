@@ -31,10 +31,10 @@ class GetUpdateGame(generics.RetrieveUpdateAPIView):
 class GameSearcher(View):
 
     http_method_names = ['post']
-    
+
     def post(self, request, format=None):
         # Serialize "new" member's email
-        serializer = serializers.SearchingPlayerSerializer(data=request.DATA)
+        serializer = serializers.SearchingPlayerSerializer(data=request.POST)
 
         if not serializer.is_valid():
             return Response(serializer.errors,
