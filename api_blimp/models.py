@@ -44,3 +44,6 @@ class Game(models.Model):
 
     def __str__(self):
         return 'Good: {0.good_guy}. Bad: {0.bad_guy}. Winner {0.winner}'.format(self)
+
+    class Meta:
+        unique_together = ('good_guy', 'bad_guy',)
