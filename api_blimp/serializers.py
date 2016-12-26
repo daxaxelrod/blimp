@@ -9,6 +9,9 @@ class PlayerSerializer(serializers.ModelSerializer):
     #     many=True,
     #     read_only=True,
     # )
+    def create(self, validated_data):
+        player, created = models.Player.objects.get_or_create(**validated_data)
+        return player
 
     class Meta:
         fields = "__all__"
