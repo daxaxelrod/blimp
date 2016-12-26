@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6376c7-4a39-4b48-9f1c-760ea801330e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api_blimp/models.py" afterPath="$PROJECT_DIR$/api_blimp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api_blimp/admin.py" afterPath="$PROJECT_DIR$/api_blimp/admin.py" />
     </list>
     <ignored path="blimpapi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,16 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Procfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
@@ -120,12 +109,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api_blimp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65725416">
-              <caret line="45" column="57" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="27" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="27" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api_blimp/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.07302824">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,6 +155,7 @@
         <option value="$PROJECT_DIR$/api_blimp/serializers.py" />
         <option value="$PROJECT_DIR$/api_blimp/views.py" />
         <option value="$PROJECT_DIR$/api_blimp/models.py" />
+        <option value="$PROJECT_DIR$/api_blimp/admin.py" />
       </list>
     </option>
   </component>
@@ -161,7 +163,6 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="918" />
     <option name="y" value="23" />
     <option name="width" value="975" />
     <option name="height" value="1173" />
@@ -384,7 +385,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="918" y="23" width="975" height="1173" extended-state="0" />
+    <frame x="0" y="23" width="975" height="1173" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494759" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -733,9 +734,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api_blimp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65725416">
-          <caret line="45" column="57" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api_blimp/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07302824">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
