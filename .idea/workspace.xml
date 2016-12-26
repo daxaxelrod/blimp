@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb6376c7-4a39-4b48-9f1c-760ea801330e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api_blimp/serializers.py" afterPath="$PROJECT_DIR$/api_blimp/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api_blimp/urls.py" afterPath="$PROJECT_DIR$/api_blimp/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api_blimp/views.py" afterPath="$PROJECT_DIR$/api_blimp/views.py" />
     </list>
     <ignored path="blimpapi.iws" />
@@ -92,8 +90,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api_blimp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6268222">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.49562684">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -552,8 +550,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api_blimp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6268222">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.49562684">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
           <folding />
         </state>
       </provider>
