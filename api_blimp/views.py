@@ -42,7 +42,11 @@ def GameSearcher(request):
                             status=status.HTTP_400_BAD_REQUEST)
 
         print("Player ID sent in: {}".format(serializer.validated_data["player_id"]))
-        searching_player = models.Player.objects.get(pk=serializer.validated_data["player_id"])
+        try:
+            searching_player = models.Player.objects.get(pk=serializer.validated_data["player_id"])
+        except models.Player.DoesNotExist:
+            return JsonResponse({"message": "Player doesn't exist!"},
+                            status=status.HTTP_403_FORBIDDEN)
 
         available_game = models.Game.objects.filter(Q(good_guy__isnull=True) |
                                                     Q(bad_guy__isnull=True)).first()
@@ -50,7 +54,15 @@ def GameSearcher(request):
             # create game
             available_game = models.Game.objects.create(good_guy=searching_player)
             status_code = status.HTTP_201_CREATED
-        else:
+        elif not available_game.good_guy:
+            # spawn player as good guy
+            available_game.good_guy = searching_player
+            available_game.save()
+            status_code = status.HTTP_200_OK
+        elif not available_game.bad_guy:
+            # spawn player as bad guy
+            available_game.bad_guy = searching_player
+            available_game.save()
             status_code = status.HTTP_200_OK
         print(available_game)
         serialized_game = serializers.GameSerializer(available_game)
