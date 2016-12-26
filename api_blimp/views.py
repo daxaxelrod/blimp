@@ -15,3 +15,13 @@ class ListCreatePlayer(generics.ListCreateAPIView):
     queryset = models.Player.objects.all()
     serializer_class = serializers.PlayerSerializer
 
+class CreateListGame(generics.ListCreateAPIView):
+    queryset = models.Game.objects.all()
+    serializer_class = serializers.GameSerializer
+
+class GetUpdateGame(generics.RetrieveUpdateAPIView):
+    queryset = models.Game.objects.all()
+    serializer_class = serializers.GameSerializer
+    lookup_url_kwarg = "game_pk"
+
+

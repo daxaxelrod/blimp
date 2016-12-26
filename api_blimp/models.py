@@ -9,7 +9,7 @@ class Player(models.Model):
 
 
     def __str__(self):
-        return self.pk
+        return "Pk: {}".format(self.pk)
 
 
 class Game(models.Model):
