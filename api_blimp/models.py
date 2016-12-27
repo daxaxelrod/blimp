@@ -21,9 +21,9 @@ class Game(models.Model):
 
     #GAME DATA STREAM
     # good guy
-    good_guy_position_x = models.FloatField(default=-2.3973)
-    good_guy_position_y = models.FloatField(default=2.82932)
-    good_guy_position_z = models.FloatField(default=-0.1822)
+    good_guy_position_x = models.FloatField(default=-26.82)
+    good_guy_position_y = models.FloatField(default=10.49)
+    good_guy_position_z = models.FloatField(default=-0.52)
 
     good_guy_rotation_x = models.FloatField(default=0)
     good_guy_rotation_y = models.FloatField(default=0)
@@ -41,9 +41,9 @@ class Game(models.Model):
     good_guy_last_key_press = models.CharField(max_length=30, null=True, blank=True)
 
     # bad guy
-    bad_guy_position_x = models.FloatField(default=-2.2453)
-    bad_guy_position_y = models.FloatField(default=2.51678)
-    bad_guy_position_z = models.FloatField(default=0.7289)
+    bad_guy_position_x = models.FloatField(default=35.87)
+    bad_guy_position_y = models.FloatField(default=10.49)
+    bad_guy_position_z = models.FloatField(default=-.52)
 
     bad_guy_rotation_x = models.FloatField(default=0)
     bad_guy_rotation_y = models.FloatField(default=0)
