@@ -31,7 +31,7 @@ class CreateListGame(generics.ListCreateAPIView):
 def UpdateGame(request, game_pk):
     # need to update a questset, not just a single record
     print(request.POST)
-    location_points = request.POST
+    location_points = request.POST.copy()
     for key, value in location_points.items():
         location_points[key] = value[0]
 
