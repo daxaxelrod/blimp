@@ -86,7 +86,7 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
                                                           rendered_in_enemy_client=False,
                                                           )
     unused_projectiles.update(rendered_in_enemy_client=True)
-    serializer = serializers.ProjectileSerializer(unused_projectiles)
+    serializer = serializers.ProjectileSerializer(unused_projectiles, many=True)
     return JsonResponse(serializer.data, status.HTTP_200_OK)
 
 
