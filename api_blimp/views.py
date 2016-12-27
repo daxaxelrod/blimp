@@ -30,10 +30,12 @@ class CreateListGame(generics.ListCreateAPIView):
 @require_http_methods(["POST"])
 def UpdateGame(request, game_pk):
     # need to update a questset, not just a single record
-    print(request.POST)
+
     location_points = request.POST.copy()
+    update_dict = {}
     for key, value in location_points.items():
-        location_points[key] = value[0]
+        update_dict[key] = value[0]
+    print(update_dict)
 
     game = models.Game.objects.filter(pk=game_pk).update(**location_points)
     game_serializer = serializers.GameSerializer(game[0])
