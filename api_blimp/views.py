@@ -7,6 +7,7 @@ from django.views.generic import View
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 from rest_framework import generics, mixins, permissions, viewsets, status
 from rest_framework.decorators import api_view
@@ -25,7 +26,19 @@ class CreateListGame(generics.ListCreateAPIView):
     queryset = models.Game.objects.all()
     serializer_class = serializers.GameSerializer
 
-class GetUpdateGame(generics.RetrieveUpdateAPIView):
+@csrf_exempt
+@require_http_methods(["POST"])
+def UpdateGame(request, game_pk):
+
+    game = models.Game.object.get(pk=game_pk).update(**request.POST)
+    game_serializer = serializers.GameSerializer(game)
+    print(game_serializer.validated_data)
+    status_code = status.HTTP_200_OK
+
+    return JsonResponse(game_serializer.data, status=status_code)
+
+
+class GetGame(generics.RetrieveAPIView):
     queryset = models.Game.objects.all()
     serializer_class = serializers.GameSerializer
     lookup_url_kwarg = "game_pk"
