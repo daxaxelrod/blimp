@@ -33,8 +33,12 @@ def UpdateGame(request, game_pk):
 
     location_points = request.POST.copy()
     update_dict = {}
+    print(location_points)
+    print("___________________")
     for key, value in location_points.items():
         if "-" in value[0]:
+            print(key)
+            print(value)
             print(value[0])
             non_negitive = value[0].replace("-", "")
             update_dict = -float(non_negitive)
