@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
+from django.db.models import Q, F
 from django.views.generic import View
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
@@ -84,9 +84,9 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
     # not shot by player, in the game and not rendered yet
     unused_projectiles = models.Projectile.objects.filter(~Q(shot_by__pk=player_pk),
                                                           game__pk=game_pk,
-                                                          rendered_in_enemy_client=False,
+                                                          rendered_in_enemy_client__lte=1,
                                                           )
-    unused_projectiles.update(rendered_in_enemy_client=True)
+
     print(unused_projectiles)
     serializer = serializers.ProjectileSerializer(unused_projectiles, many=True)
     print(serializer.data)
@@ -95,6 +95,7 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
                                                                    "rendered_in_enemy_client", "shot_by",
                                                                    "start_location_x", "start_location_y"))
     print(values_list)
+    unused_projectiles.update(rendered_in_enemy_client=F("rendered_in_enemy_client")+1)
 
     return JsonResponse({'results': serializer.data}, status=status.HTTP_200_OK)
 

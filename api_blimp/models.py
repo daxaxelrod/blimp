@@ -75,6 +75,6 @@ class Projectile(models.Model):
     firing_force_z = models.FloatField()
 
     shot_by = models.ForeignKey(Player, related_name="projectiles_shot")
-    rendered_in_enemy_client = models.BooleanField(default=False)
+    rendered_in_enemy_client = models.IntegerField(default=0)
 
     game = models.ForeignKey(Game, related_name="projectiles", null=True, blank=True)
