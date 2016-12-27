@@ -31,10 +31,10 @@ class CreateListGame(generics.ListCreateAPIView):
 def UpdateGame(request, game_pk):
     # need to update a questset, not just a single record
     print(request.POST)
-    location_points = dict(request.POST.iterlists())
+    location_points = request.POST
     for key, value in location_points.items():
         location_points[key] = value[0]
-        
+
     game = models.Game.objects.filter(pk=game_pk).update(**location_points)
     game_serializer = serializers.GameSerializer(game[0])
     print(game_serializer.validated_data)
