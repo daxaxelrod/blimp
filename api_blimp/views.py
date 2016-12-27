@@ -30,6 +30,8 @@ class CreateListGame(generics.ListCreateAPIView):
 @require_http_methods(["POST"])
 def UpdateGame(request, game_pk):
     # need to update a questset, not just a single record
+    print(request.POST)
+    return JsonResponse({"message": "meh"})
     game = models.Game.objects.filter(pk=game_pk).update(**request.POST)
     game_serializer = serializers.GameSerializer(game[0])
     print(game_serializer.validated_data)
