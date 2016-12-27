@@ -16,7 +16,8 @@ from rest_framework.response import Response
 
 from . import models
 from . import serializers
-import datetime
+
+import json
 
 
 def clean_unity_data(incoming_dict):
@@ -86,9 +87,16 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
                                                           rendered_in_enemy_client=False,
                                                           )
     unused_projectiles.update(rendered_in_enemy_client=True)
+    print(unused_projectiles)
     serializer = serializers.ProjectileSerializer(unused_projectiles, many=True)
-    return JsonResponse(serializer.data, status.HTTP_200_OK, safe=False)
+    print(serializer.data)
+    values_list = list(unused_projectiles.values("firing_force_x", "firing_force_y", "firing_force_z",
+                                                                   "game", "game_id", "id", "start_location_z",
+                                                                   "rendered_in_enemy_client", "shot_by",
+                                                                   "start_location_x", "start_location_y"))
+    print(values_list)
 
+    return JsonResponse({'results': serializer.data}, status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(["POST"])
