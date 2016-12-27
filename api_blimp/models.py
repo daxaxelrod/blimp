@@ -57,8 +57,6 @@ class Game(models.Model):
     bad_ship_rotation_y = models.FloatField(default=0)
     bad_ship_rotation_z = models.FloatField(default=0)
 
-
-
     bad_guy_last_key_press = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self):
@@ -66,3 +64,16 @@ class Game(models.Model):
 
     class Meta:
         unique_together = ('good_guy', 'bad_guy',)
+
+class Projectile(models.Model):
+    start_location_x = models.FloatField()
+    start_location_y = models.FloatField()
+    start_location_z = models.FloatField()
+
+    firing_force_x = models.FloatField()
+    firing_force_y = models.FloatField()
+    firing_force_z = models.FloatField()
+
+    rendered_in_enemy_client = models.BooleanField(default=False)
+
+    game = models.ForeignKey(Game, related_name="projectiles", null=True, blank=True)

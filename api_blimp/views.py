@@ -18,9 +18,23 @@ from . import models
 from . import serializers
 import datetime
 
+
+def clean_unity_data(incoming_dict):
+    cleaned_data = {}
+    for key, value in incoming_dict.items():
+        # print("Key: {}  value:  {}".format(key, value))
+        if "-" in value[0]:
+            non_negative = value.replace("-", "")
+            cleaned_data[key] = -float(non_negative)
+        else:
+            cleaned_data[key] = value
+    return cleaned_data
+
+
 class ListCreatePlayer(generics.ListCreateAPIView):
     queryset = models.Player.objects.all()
     serializer_class = serializers.PlayerSerializer
+
 
 class CreateListGame(generics.ListCreateAPIView):
     queryset = models.Game.objects.all()
@@ -29,22 +43,10 @@ class CreateListGame(generics.ListCreateAPIView):
 @csrf_exempt
 @require_http_methods(["POST"])
 def UpdateGame(request, game_pk):
-    # need to update a questset, not just a single record
+    # need to update a queryset, not just a single record
 
     location_points = request.POST.copy()
-    update_dict = {}
-    print(location_points)
-    print("___________________")
-    for key, value in location_points.items():
-        print("Key: {}  value:  {}".format(key,value))
-        if "-" in value[0]:
-            print(key)
-            print(value)
-            non_negative = value.replace("-", "")
-            update_dict[key] = -float(non_negative)
-        else:
-            update_dict[key] = value
-    print(update_dict)
+    update_dict = clean_unity_data(location_points)
 
     game_update = models.Game.objects.filter(pk=game_pk).update(**update_dict)
     game = models.Game.objects.get(pk=game_pk)
@@ -54,10 +56,33 @@ def UpdateGame(request, game_pk):
     return JsonResponse(game_serializer.data, status=status_code)
 
 
+@csrf_exempt
+@require_http_methods(["POST"])
+def CreateProjectile(request, game_pk):
+    game = models.Game.objects.get(pk=game_pk)
+    projectile_info = request.POST.copy()
+    cleaned_data = clean_unity_data(projectile_info)
+    projectile = models.Projectile.objects.create(game=game, **cleaned_data)
+
+    serializer = serializers.ProjectileSerializer(projectile)
+
+    return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+
+
+
 class GetGame(generics.RetrieveAPIView):
     queryset = models.Game.objects.all()
     serializer_class = serializers.GameSerializer
     lookup_url_kwarg = "game_pk"
+
+
+@require_http_methods(["GET"])
+def ListUnusedProjectiles(request, game_pk):
+    unused_projectiles = models.Projectile.objects.filter(game__pk=game_pk, rendered_in_enemy_client=False)
+    unused_projectiles.update(rendered_in_enemy_client=True)
+    serializer = serializers.ProjectileSerializer(unused_projectiles)
+    return JsonResponse(serializer.data, status.HTTP_200_OK)
+
 
 @csrf_exempt
 @api_view(["POST"])

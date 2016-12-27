@@ -27,3 +27,8 @@ class GameSerializer(serializers.ModelSerializer):
 class SearchingPlayerSerializer(serializers.Serializer):
 
     player_id = serializers.IntegerField()
+
+class ProjectileSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = models.Projectile
