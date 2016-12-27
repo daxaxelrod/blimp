@@ -39,9 +39,8 @@ def UpdateGame(request, game_pk):
         if "-" in value[0]:
             print(key)
             print(value)
-            print(value[0])
-            non_negitive = value[0].replace("-", "")
-            update_dict = -float(non_negitive)
+            non_negative = value.replace("-", "")
+            update_dict = -float(non_negative)
         else:
             update_dict[key] = value[0]
     print(update_dict)
