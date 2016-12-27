@@ -31,7 +31,7 @@ class CreateListGame(generics.ListCreateAPIView):
 def UpdateGame(request, game_pk):
     # need to update a questset, not just a single record
     game = models.Game.objects.filter(pk=game_pk).update(**request.POST)
-    game_serializer = serializers.GameSerializer(game)
+    game_serializer = serializers.GameSerializer(game[0])
     print(game_serializer.validated_data)
     status_code = status.HTTP_200_OK
 
