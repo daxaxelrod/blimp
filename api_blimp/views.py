@@ -30,7 +30,7 @@ class CreateListGame(generics.ListCreateAPIView):
 @require_http_methods(["POST"])
 def UpdateGame(request, game_pk):
 
-    game = models.Game.object.get(pk=game_pk).update(**request.POST)
+    game = models.Game.objects.get(pk=game_pk).update(**request.POST)
     game_serializer = serializers.GameSerializer(game)
     print(game_serializer.validated_data)
     status_code = status.HTTP_200_OK
