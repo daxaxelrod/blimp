@@ -49,12 +49,9 @@ def UpdateGame(request, game_pk):
     game_update = models.Game.objects.filter(pk=game_pk).update(**update_dict)
     game = models.Game.objects.get(pk=game_pk)
     game_serializer = serializers.GameSerializer(game)
-    if game_serializer.is_valid():
-        print(game_serializer.validated_data)
-        status_code = status.HTTP_200_OK
-        return JsonResponse(game_serializer.validated_data, status=status_code)
-    else:
-        return JsonResponse({"message": "Invalid data"}, status=status.HTTP_403_FORBIDDEN)
+
+    status_code = status.HTTP_200_OK
+    return JsonResponse(game_serializer.data, status=status_code)
 
 
 class GetGame(generics.RetrieveAPIView):
