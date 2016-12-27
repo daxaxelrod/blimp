@@ -84,7 +84,7 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
     # not shot by player, in the game and not rendered yet
     unused_projectiles = models.Projectile.objects.filter(~Q(shot_by__pk=player_pk),
                                                           game__pk=game_pk,
-                                                          rendered_in_enemy_client__lte=1,
+                                                          rendered_in_enemy_client=0,
                                                           )
 
     print(unused_projectiles)
