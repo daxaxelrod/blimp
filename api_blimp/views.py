@@ -37,7 +37,7 @@ def UpdateGame(request, game_pk):
         update_dict[key] = value[0]
     print(update_dict)
 
-    game = models.Game.objects.filter(pk=game_pk).update(**location_points)
+    game = models.Game.objects.filter(pk=game_pk).update(**update_dict)
     game_serializer = serializers.GameSerializer(game[0])
     print(game_serializer.validated_data)
     status_code = status.HTTP_200_OK
