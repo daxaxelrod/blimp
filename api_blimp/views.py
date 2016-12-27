@@ -35,7 +35,9 @@ def UpdateGame(request, game_pk):
     update_dict = {}
     for key, value in location_points.items():
         if "-" in value[0]:
-            update_dict = -float(value[0].replace("-", ""))
+            print(value[0])
+            non_negitive = value[0].replace("-", "")
+            update_dict = -float(non_negitive)
         else:
             update_dict[key] = value[0]
     print(update_dict)
