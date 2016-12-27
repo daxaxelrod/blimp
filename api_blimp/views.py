@@ -48,7 +48,7 @@ def UpdateGame(request, game_pk):
 
     game_update = models.Game.objects.filter(pk=game_pk).update(**update_dict)
     game = models.Game.objects.get(pk=game_pk)
-    game_serializer = serializers.GameSerializer(game[0])
+    game_serializer = serializers.GameSerializer(game)
     print(game_serializer.validated_data)
     status_code = status.HTTP_200_OK
 
