@@ -36,13 +36,14 @@ def UpdateGame(request, game_pk):
     print(location_points)
     print("___________________")
     for key, value in location_points.items():
+        print("Key: {}  value:  {}".format(key,value))
         if "-" in value[0]:
             print(key)
             print(value)
             non_negative = value.replace("-", "")
-            update_dict = -float(non_negative)
+            update_dict[key] = -float(non_negative)
         else:
-            update_dict[key] = value[0]
+            update_dict[key] = value
     print(update_dict)
 
     game = models.Game.objects.filter(pk=game_pk).update(**update_dict)
