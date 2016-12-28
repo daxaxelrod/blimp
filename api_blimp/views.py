@@ -86,15 +86,16 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
                                                           game__pk=game_pk,
                                                           rendered_in_enemy_client=0,
                                                           )
+    print("count of projectiles {}".format(unused_projectiles.count()))
 
     print(unused_projectiles)
     serializer = serializers.ProjectileSerializer(unused_projectiles, many=True)
     print(serializer.data)
-    values_list = list(unused_projectiles.values("firing_force_x", "firing_force_y", "firing_force_z",
-                                                                   "game", "game_id", "id", "start_location_z",
-                                                                   "rendered_in_enemy_client", "shot_by",
-                                                                   "start_location_x", "start_location_y"))
-    print(values_list)
+    # values_list = list(unused_projectiles.values("firing_force_x", "firing_force_y", "firing_force_z",
+    #                                                                "game", "game_id", "id", "start_location_z",
+    #                                                                "rendered_in_enemy_client", "shot_by",
+    #                                                                "start_location_x", "start_location_y"))
+    #
     unused_projectiles.update(rendered_in_enemy_client=F("rendered_in_enemy_client")+1)
 
     return JsonResponse({'results': serializer.data,
