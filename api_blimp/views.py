@@ -87,6 +87,7 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
                                                           rendered_in_enemy_client=0,
                                                           )
     print("count of projectiles {}".format(unused_projectiles.count()))
+    num_projectiles = unused_projectiles.count()
 
     print(unused_projectiles)
     serializer = serializers.ProjectileSerializer(unused_projectiles, many=True)
@@ -99,7 +100,7 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
     unused_projectiles.update(rendered_in_enemy_client=F("rendered_in_enemy_client")+1)
 
     return JsonResponse({'results': serializer.data,
-                         'length': unused_projectiles.count()}, status=status.HTTP_200_OK)
+                         'length': num_projectiles}, status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(["POST"])
