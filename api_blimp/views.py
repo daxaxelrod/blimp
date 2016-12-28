@@ -103,6 +103,21 @@ def ListUnusedProjectiles(request, game_pk, player_pk):
                          'length': num_projectiles}, status=status.HTTP_200_OK)
 
 @csrf_exempt
+def GameWinnerAndLoser(request, game_pk, winner_pk):
+    game = models.Game.objects.get(pk=game_pk)
+    if game.good_guy.pk == winner_pk:
+        game.good_guy.wins += 1
+        game.bad_guy.losses += 1
+    elif game.bad_guy.pk == winner_pk:
+        game.bad_guy.wins += 1
+        game.good_guy.losses += 1
+    game.good_guy.save()
+    game.bad_guy.save()
+
+    return JsonResponse({"message": "winner and loser recorded"}, status=status.HTTP_200_OK)
+
+
+@csrf_exempt
 @api_view(["POST"])
 def GameSearcher(request):
     if request.method.lower() == "post":
