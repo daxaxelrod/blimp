@@ -14,7 +14,10 @@ University Innovation Fellows Training - Spring 2017 | Stanford University | Nov
 </title>
 <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Comfortaa:400,700|Nunito:300' rel='stylesheet' type='text/css'>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://diek5u6r8i07w.cloudfront.net/assets/application_priority-c704b09b27bfdd6d2b0131c0df37fff9.css" crossorigin="anonymous"chrom>
+<link rel="stylesheet" href="https://diek5u6r8i07w.cloudfront.net/assets/application_priority-c704b09b27bfdd6d2b0131c0df37fff9.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
 <link href='//diek5u6r8i07w.cloudfront.net/assets/brand/favicon-4f788eb5c5ecec33b093cc2488274fc0.ico' rel='shortcut icon'>
 <!-- <script src="#{asset_path('client_logger.js')}"></script> -->
 <!-- :javascript -->
@@ -352,7 +355,7 @@ collapsed
                 </div>
               </div>
               <div class="row-fluid center margin-top-5 ng-hide" ng-show="!userCtrl.ProfileUserModel.sections_load.basic_info || !userCtrl.ProfileUserModel.sections_load.activity_metrics">
-                <img src="/assets/icons/ajax-loader.gif">
+
               </div>
               <div class="row-fluid" ng-show="userCtrl.ProfileUserModel.sections_load.basic_info &amp;&amp; userCtrl.ProfileUserModel.sections_load.activity_metrics">
                 <div class="row-fluid ng-hide" ng-show="userCtrl.ProfileUserModel.role">
@@ -397,6 +400,7 @@ collapsed
             display:none;
           }
       </style>
+      <h1 class="animated zoomInRight">Bio</h1>
       <div id="add_bio_inner"></div>
       <audio id="starting_audio">
     <source src="https://s3.amazonaws.com/thingsandstuff123852/upfile_608230416.mp3" type="audio/mpeg">
@@ -415,7 +419,7 @@ collapsed
     <button class="btn btn-primary anchor-decoration" ng-disabled="userCtrl.saveBioFlag" ng-hide="bioForm.bio.$error.maxlength || bioForm.headline.$error.maxlength" type="submit">
       <span ng-show="!userCtrl.saveBioFlag">Save</span>
       <span ng-show="userCtrl.saveBioFlag" class="ng-hide">
-        <img src="/assets/icons/ajax-loader.gif">
+
         Saving
       </span>
     </button>
@@ -645,7 +649,7 @@ collapsed
   <button class="btn btn-primary anchor-decoration" ng-click="userCtrl.saveCourseProfileQuestion();" ng-disabled="userCtrl.saveCourseProfileQuestionFlag">
     <span ng-show="!userCtrl.saveCourseProfileQuestionFlag">Save</span>
     <span ng-show="userCtrl.saveCourseProfileQuestionFlag" class="ng-hide">
-      <img src="/assets/icons/ajax-loader.gif">
+
       Saving
     </span>
   </button>
@@ -1033,8 +1037,8 @@ collapsed
         $("#starting_audio")[0].play();
 
         $("#add_bio_inner").typed({
-            strings: ["^10000 First sentence.", "Second sentence."],
-            typeSpeed: 0
+            strings: ["^3000..............", "^1000Hi!! I'm David. I love to ", "^1000HELLO PEOPLE OF EARTH. THE GALAXY OF ", "^1000 I like to think of big ideas like trees. They take", "ACTUAL BIO HERE JQUERY THE ENTIRE THING IN AFTER A BIT"],
+            typeSpeed: .4
         });
     });
 </script>
