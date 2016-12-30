@@ -1038,7 +1038,10 @@ collapsed
 
         $("#add_bio_inner").typed({
             strings: ["^3000..............", "^1000Hi!! I'm David. I love to ", "^1000HELLO PEOPLE OF EARTH. THE GALAXY OF ", "^1000 I like to think of big ideas like trees. They take", "ACTUAL BIO HERE JQUERY THE ENTIRE THING IN AFTER A BIT"],
-            typeSpeed: .4
+            typeSpeed: .4,
+            callback: function() {
+               $("#add_bio_inner").append("This is the full bio that nobody wants to watch");
+            },
         });
     });
 </script>
