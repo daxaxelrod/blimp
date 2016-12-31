@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb6376c7-4a39-4b48-9f1c-760ea801330e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api_blimp/templates/api_blimp/index.html" afterPath="$PROJECT_DIR$/api_blimp/templates/api_blimp/index.html" />
-    </list>
+    <list default="true" id="eb6376c7-4a39-4b48-9f1c-760ea801330e" name="Default" comment="" />
     <ignored path="blimpapi.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -410,7 +408,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="23" width="1908" height="1173" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12612613" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

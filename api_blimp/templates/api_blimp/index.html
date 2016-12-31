@@ -1037,10 +1037,12 @@ collapsed
         $("#starting_audio")[0].play();
 
         $("#add_bio_inner").typed({
-            strings: ["^3000..............", "^1000Hi!! I'm David. I love to ", "^1000HELLO PEOPLE OF EARTH. THE GALAXY OF ", "^1000 I like to think of big ideas like trees. They take", "ACTUAL BIO HERE JQUERY THE ENTIRE THING IN AFTER A BIT"],
+            strings: ["^3000..............", "^1000Hi!! I'm David. I love to ", "^1000HELLO PEOPLE OF EARTH. THE GALAXY OF ",
+            "^1000 I like to think of big ideas like trees. They take", "My life consists of building. My favorite part of the building process is when you put something you've built "],
             typeSpeed: .4,
+            contentType: 'html',
             callback: function() {
-               $("#add_bio_inner").append("This is the full bio that nobody wants to watch");
+               $("#add_bio_inner").append("into someone else's hands. If they smile, my week is made. If they laugh, my month is made. I've had a few goes at this with <a href='www.loomvr.com'>Loom</a> and <a href='frozen-badlands-98668.herokuapp.com'>Tibah</a>. My life goal is simply to be as useful as possible. Right now that path has taken me to technology but I expect that to change as the world changes.");
             },
         });
     });
